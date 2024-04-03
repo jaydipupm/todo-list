@@ -2,9 +2,6 @@ app.controller("TodoController", function ($scope, TodoService, $filter) {
   $scope.idEdit = false;
   $scope.todo = {};
 
-  $scope.formData = {}; // Initialize form data object
-  // rest of the controller code
-
   $scope.getData = function () {
     TodoService.getAll().then(function (response) {
       $scope.todos = response.data.data;

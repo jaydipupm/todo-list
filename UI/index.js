@@ -1,9 +1,8 @@
 var app = angular.module("app", ["ngRoute"]);
 app.config(function ($routeProvider) {
   $routeProvider.when("/", {
-    templateUrl: "templates/home.html",
+    templateUrl: "templates/Todo.html",
     controller: "TodoController",
-    // css: 'templates/home.styles.css'
   });
 });
 
