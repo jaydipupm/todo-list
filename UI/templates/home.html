@@ -1,0 +1,53 @@
+
+
+<div ng-controller="TodoController">
+
+
+  <div class="main-form-container">
+    <div class="sub-container">
+      <form  ng-init="newTodo.status='pending';newTodo.priority='low'">
+        <input type="text" ng-model="newTodo.title" placeholder="Enter todo title" required><br>
+        <select ng-model="newTodo.status" ng-options="status for status in ['pending', 'in-progress', 'completed']">
+          <option value="">Select status</option>
+        </select><br>
+        <select ng-model="newTodo.priority" ng-options="priority for priority in ['high', 'medium', 'low']">
+          <option value="">Select priority</option>
+        </select><br>
+        <input type="text" ng-model="newTodo.description" placeholder="Enter description"><br>
+        <input type="date" ng-model="newTodo.dueDate" ng-value="newTodo.dueDate | date:'yyyy-MM-dd'"><br>
+        <button type="submit" ng-show="!idEdit" ng-click="addTodo()">Add Todo</button>
+        <button type="submit" ng-show="idEdit" ng-click="updateTodo()">Update Todo</button>
+      </form>
+    </div>
+
+  </div>
+  <div class="container">
+    <h1>Todo List</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="todo in todos  | orderBy:'dueDate'">
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.status }}</td>
+          <td ng-class="getPriorityStyle(todo.priority)">{{ todo.priority }}</td>
+          <td>{{ todo.description }}</td>
+          <td>{{ todo.dueDate | date:'yyyy-MM-dd' }}</td>
+          <td>
+            <button ng-click="editTodo(todo)">Edit</button>
+            <button ng-click="deleteTodo(todo)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>

@@ -12,7 +12,6 @@ async function handleCreate(req, res) {
       "Task created successfully.",
       result
     );
-
   } catch (error) {
     return apiResponse.validationErrorWithData(res, error.message, {
       success: false,
@@ -53,10 +52,11 @@ async function handleUpdate(req, res) {
   try {
     if (req.params.id) {
       const objectId = new mongoose.Types.ObjectId(req.params.id);
-      req.body.updated_at = new Date();
+
       const result = await Task.updateOne(
         { _id: objectId },
-        { $set: req.body }, { new: true }
+        { $set: req.body },
+        { new: true }
       );
       if (result.modifiedCount)
         return apiResponse.successResponseWithData(
@@ -80,7 +80,6 @@ async function handleUpdate(req, res) {
     return apiResponse.validationErrorWithData(res, error.message, {
       success: false,
     });
-
   }
 }
 
@@ -95,8 +94,6 @@ async function handleGetList(req, res) {
     });
   }
 }
-
-
 
 module.exports = {
   handleCreate,

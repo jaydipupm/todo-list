@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <link rel="stylesheet" href="templates/home.styles.css">
+</head>
+
+<body>
+  <div ng-view></div>
+  <span ng-show="error">{{error}}</span>
+  <script src="index.js"> </script>
+  <script src="./templates/home.controller.js"></script>
+  <script src="/UI/services/todo.service.js"></script>
+
+</body>
+
+</html>
